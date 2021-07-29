@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 # evt/evtx to csv grep type file
 # Requires the Evtx library located https://github.com/williballenthin/python-evtx
+# To compile, pyinstaller --onefile  C:\Tools\Scripts\evtxcsvwin.py --distpath C:\Tools\Scripts\ --name evtxcsv.exe
 
 from Evtx.Evtx import Evtx
 from xml.etree.ElementTree import fromstring
@@ -65,11 +66,11 @@ if __name__ == "__main__":
 	if (len(argv) == 4):
 		parameter=argv[1] 
 		input_path=argv[2]
-		output_path=argv[3]
+		output_path=argv[3]+"/Evtxcsv"
 		evtx_files = (glob(input_path+"/**/*.evtx", recursive=True))
 		evt_files = (glob(input_path+"/**/*.evt", recursive=True))
 		try:
-			mkdir(argv[3])
+			mkdir(output_path)
 		except:
 			pass
 		for line in evtx_files:
